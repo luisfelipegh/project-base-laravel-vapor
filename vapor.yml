@@ -1,8 +1,10 @@
+id : 1
 name: laravel-vapor
 enviroments:
   production:
     memory: 1024
     cli-memory: 512
+    database: laravel-vapor
     runtime: php-7.4
     build:
       - 'composer install'
@@ -10,6 +12,7 @@ enviroments:
       - 'npm install && npm run prod && rm -rf node_modules'
   development:
     memory: 1024
+    database: laravel-vapor-dev
     cli-memory: 512
     runtime: php-7.4
     build:

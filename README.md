@@ -58,7 +58,10 @@ you can register vapor command (optional)
 export PATH="$PATH:$HOME/.config/composer/vendor/bin"
 ```
 
+## Yaml vapor File
+
 you need modify or create a file vapor.yml with own preferences
+
 ```yaml
 name: project-name
 enviroments:
@@ -80,4 +83,55 @@ enviroments:
       - 'npm install && npm run dev && rm -rf node_modules'
 ```
 
- 
+additional params in environments object 
+```yaml
+
+some-environment:
+    storage: your-name-storage
+    deploy: 
+        - 'some script'
+        - 'other script'
+    database: your-database-name
+    domain: your-domain
+    cache: your-server-cache
+    mail: 
+    scheduler:
+    queues: 
+    queue-timeout:
+    queue-concurrency:
+```
+
+### Optionals implementations params
+
+if you need upload files in storage, you will create a policy 
+```bash
+php artisan make:policy UserPolicy --model=User
+```
+next, you need add method to upload file 
+
+``` php
+/**
+ * Determine whether the user can upload files. 
+ *
+ * @param  \App\User  $user
+ * @return mixed
+ */
+public function uploadFiles(User $user)
+{
+    return true;
+}
+```
+## Executing
+
+now, you need execute the following command and configure team, project and login to vapor account
+```bash
+vapor login
+```
+
+finally, you can start deploy your project with preference environment configured in vapor.yml
+
+```bash
+vapor deploy <environment>
+``` 
+
+
