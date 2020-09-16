@@ -1,0 +1,18 @@
+name: laravel-vapor
+enviroments:
+  production:
+    memory: 1024
+    cli-memory: 512
+    runtime: php-7.4
+    build:
+      - 'composer install'
+      - 'php artisan event:cache'
+      - 'npm install && npm run prod && rm -rf node_modules'
+  development:
+    memory: 1024
+    cli-memory: 512
+    runtime: php-7.4
+    build:
+      - 'composer install'
+      - 'php artisan event:cache'
+      - 'npm install && npm run dev && rm -rf node_modules'
