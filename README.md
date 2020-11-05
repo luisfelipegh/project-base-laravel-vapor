@@ -44,10 +44,12 @@ In this section you need a vapor library installed in SO
 
 ```bash
 composer require laravel/vapor-cli
+composer require laravel/vapor-core
 ```
 or global installation 
 ```bash
 composer global require laravel/vapor-cli
+composer global require laravel/vapor-core
 ```
 next you can validate installation with 
 ```bash
